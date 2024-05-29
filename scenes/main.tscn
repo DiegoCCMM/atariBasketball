@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c84s356henyah"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_bmcyb"]
+[ext_resource type="PackedScene" uid="uid://5u44aeg7jni8" path="res://scenes/player.tscn" id="1_yj25l"]
+[ext_resource type="Texture2D" uid="uid://draihjyqtfga" path="res://art/background.png" id="2_ja0xr"]
+[ext_resource type="PackedScene" uid="uid://ccuuj0qhl7lnk" path="res://scenes/basket.tscn" id="4_4if5r"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_bmcyb")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(161, 106)
+texture = ExtResource("2_ja0xr")
+
+[node name="Score" type="Label" parent="."]
+offset_left = 140.0
+offset_top = 17.0
+offset_right = 321.0
+offset_bottom = 40.0
+text = "begin!"
+
+[node name="Player" parent="." instance=ExtResource("1_yj25l")]
+position = Vector2(219, 63)
+
+[node name="basket1" parent="." instance=ExtResource("4_4if5r")]
+position = Vector2(-2, -2)
+
+[node name="basket2" parent="." instance=ExtResource("4_4if5r")]
+position = Vector2(324, -2)
+scale = Vector2(-1, 1)
