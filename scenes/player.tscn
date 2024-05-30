@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://5u44aeg7jni8"]
+[gd_scene load_steps=10 format=3 uid="uid://5u44aeg7jni8"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_i6ygw"]
 [ext_resource type="Texture2D" uid="uid://x64emp6lyib4" path="res://art/shooting_player2.png" id="2_1qd0v"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b7brat0a6ihmb" path="res://art/player_standing1.png" id="4_xdmpa"]
 [ext_resource type="Texture2D" uid="uid://d0t76qs2n0087" path="res://art/player_standing2.png" id="5_jmmeu"]
 [ext_resource type="Script" path="res://scripts/movement_component.gd" id="6_8ds8h"]
+[ext_resource type="Script" path="res://scripts/ShootingComponent.gd" id="7_g2avq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rpywx"]
 animations = [{
@@ -44,9 +45,14 @@ animation = &"shooting"
 frame = 1
 frame_progress = 0.557448
 
-[node name="MovementComponent" type="Node" parent="."]
-script = ExtResource("6_8ds8h")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 0.5)
 shape = SubResource("RectangleShape2D_4eefb")
+
+[node name="MovementComponent" type="Node" parent="."]
+script = ExtResource("6_8ds8h")
+SPEED = 250.0
+JUMP_VELOCITY = -200.0
+
+[node name="ShootingComponent" type="Node" parent="."]
+script = ExtResource("7_g2avq")
