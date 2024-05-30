@@ -11,6 +11,11 @@ func _ready():
 	# Ensure the mouse is visible
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	animated_sprite.play("standing")
+	$ShootingComponent.score.connect(
+		func reemit():
+			print("player emits score")
+			emit_signal("score")
+	)
 
 func _process(delta):
 	var direction = movement_component.move(self, delta)

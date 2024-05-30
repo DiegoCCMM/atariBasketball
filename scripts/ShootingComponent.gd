@@ -2,6 +2,8 @@ extends Node
 
 class_name ShootingComponent
 
+signal score
+
 func time_of_animation(animated_sprite, anim):
 	var relative_duration = animated_sprite.sprite_frames.get_frame_duration(anim, 1.0)
 	var animation_fps = animated_sprite.sprite_frames.get_frame_count(anim)
@@ -29,7 +31,7 @@ func shoot(body, spawnable, standing_sprite_animation, shooting_sprite_animation
 	ball_instance.shoot(direction)
 	ball_instance.score.connect(
 		func reemit():
-			print("player emits score")
+			print("shooting component emits score")
 			emit_signal("score")
 	)
 	# Use a Timer to switch back to standing animation after the shooting animation ends
