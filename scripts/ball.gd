@@ -9,9 +9,10 @@ func _ready():
 func shoot(direction):
 	linear_velocity = direction * speed
 
-func handle_score():
-	print("pelota emite score")
-	emit_signal("score")
+func handle_score(body):
+	if body.name == name:
+		print("pelota emite score")
+		emit_signal("score")
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():

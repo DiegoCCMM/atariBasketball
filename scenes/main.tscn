@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://c84s356henyah"]
+[gd_scene load_steps=6 format=3 uid="uid://c84s356henyah"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_bmcyb"]
 [ext_resource type="PackedScene" uid="uid://5u44aeg7jni8" path="res://scenes/player.tscn" id="1_yj25l"]
 [ext_resource type="Texture2D" uid="uid://draihjyqtfga" path="res://art/background.png" id="2_ja0xr"]
 [ext_resource type="PackedScene" uid="uid://ccuuj0qhl7lnk" path="res://scenes/basket.tscn" id="4_4if5r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bgiow"]
+size = Vector2(325, 20)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_bmcyb")
@@ -11,6 +14,14 @@ script = ExtResource("1_bmcyb")
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(161, 106)
 texture = ExtResource("2_ja0xr")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Background"]
+collision_layer = 7
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D"]
+position = Vector2(-1, 74)
+shape = SubResource("RectangleShape2D_bgiow")
 
 [node name="Score" type="Label" parent="."]
 offset_left = 140.0
