@@ -11,15 +11,11 @@ func time_of_animation(animated_sprite, anim):
 	return(relative_duration / (animation_fps * abs(playing_speed)))
 
 func shoot(player, factory, standing_sprite_animation, shooting_sprite_animation):
-	# Play the shooting animation
 	player.animated_sprite.play(shooting_sprite_animation)
 
-	# Spawn the ball
 	var ball_instance = factory.ball_factory(player)
 	
-	# Calculate the direction to shoot the ball
-	var mouse_position = player.get_global_mouse_position()
-	var direction = (mouse_position - player.global_position).normalized()
+	var direction = calculate_direction_using_mouse_position(player)
 
 	# Add the ball to the main scene and call the shoot method
 	player.get_parent().add_child(ball_instance)
@@ -40,6 +36,11 @@ func shoot(player, factory, standing_sprite_animation, shooting_sprite_animation
 		Callable(self, "_on_shooting_animation_done").bind(player, standing_sprite_animation)
 	)
 	timer.start()
+
+func calculate_direction_using_mouse_position(player):
+	var mouse_position = player.get_global_mouse_position()
+	var direction = (mouse_position - player.global_position).normalized()
+	return direction
 
 func _on_shooting_animation_done(player, standing_sprite_animation):
 	player.animated_sprite.play(standing_sprite_animation)
