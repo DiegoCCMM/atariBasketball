@@ -3,8 +3,9 @@ extends Node2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var movement_component: MovementComponent = $MovementComponent
 @onready var shooting_component: ShootingComponent = $ShootingComponent
+@export var ball_factory: Node = preload("res://scripts/BallFactory.gd").new()
 
-var BallScene = preload("res://scenes/ball.tscn")
+
 signal score
 
 func _ready():
@@ -23,7 +24,7 @@ func _process(delta):
 	
 	# Example input for shooting, you can change this to your actual input logic
 	if Input.is_action_just_pressed("shoot"):
-		shooting_component.shoot(self, BallScene, "standing", "shooting")
+		shooting_component.shoot(self, ball_factory, "standing", "shooting")
 
 func turn_sprite_around_based_on_direction(direction):
 	if direction:
